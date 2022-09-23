@@ -19,17 +19,17 @@ public class Main {
 
     private static short[] encrypt(String txt, int key) {
         short[] result = new short[txt.length()];
-        for(int i = 0;i < txt.length();i++) {
+        for (int i = 0; i < txt.length(); i++) {
             int a = txt.charAt(i) ^ key;
-            result[i] = (short)a;
+            result[i] = (short) a;
         }
         return result;
     }
 
     private static short[] mergeShortArray(short[] a, short[] b) {
         short[] result = new short[a.length + b.length];
-        for(int i = 0;i < a.length + b.length;i++) {
-            if(i >= a.length) {
+        for (int i = 0; i < a.length + b.length; i++) {
+            if (i >= a.length) {
                 result[i] = b[i - a.length];
             } else {
                 result[i] = a[i];
@@ -67,7 +67,7 @@ public class Main {
         System.out.println("private static short[] $ = " + Arrays.toString(library).replace("[", "{").replace("]", "}") + ";");
 
         // 输出解密代码
-        System.out.println("private static String " +mn+ "(int i, int i2, int i3) {\n" +
+        System.out.println("private static String " + mn + "(int i, int i2, int i3) {\n" +
                 "	char[] cArr = new char[i2 - i];\n" +
                 "	for (int i4 = 0; i4 < i2 - i; i4++) {\n" +
                 "		cArr[i4] = (char) ($[i + i4] ^ i3);\n" +
@@ -76,8 +76,8 @@ public class Main {
                 "}");
 
         // 解密
-        for(int i = 0;i < keys.size();i++) {
-            System.out.println(codes.get(i) + " = " + decrypt(poss.get(i), poss.get(i+1), keys.get(i)));
+        for (int i = 0; i < keys.size(); i++) {
+            System.out.println(codes.get(i) + " = " + decrypt(poss.get(i), poss.get(i + 1), keys.get(i)));
         }
     }
 
